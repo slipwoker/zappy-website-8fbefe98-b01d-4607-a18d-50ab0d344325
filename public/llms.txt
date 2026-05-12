@@ -1,0 +1,76 @@
+# SOLGAG – סולגג — Generative Engine Optimization Map
+
+> SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates itself through full end-to-end project management — from initial feasibility checks and professional planning, through financing assistance and utility submissions, all the way to installation and system handover. SOLGG works with experienced subcontractor installers and prides itself on transparent, personalized service that guides the client through every step of the process. The brand conveys professionalism, trustworthiness, and a commitment to making solar energy accessible and stress-free for Israeli homeowners and business owners.
+
+---
+
+## Pages
+
+### בית
+https://solgag-8fbefe98.zappy5.app
+SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates 
+
+## Legal & Policy
+
+### Privacy Policy
+https://solgag-8fbefe98.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://solgag-8fbefe98.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://solgag-8fbefe98.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+## How to Contact Us
+
+- (No contact details configured yet.)
+
+### Contact form
+- URL: https://solgag-8fbefe98.zappy5.app
+- Endpoint: https://solgag-8fbefe98.zappy5.app/api/email/contact-form
+- Method: POST
+- Content-Type: application/json
+- Fields:
+  - `name` (text, required)
+  - `phone` (tel, required)
+  - `email` (email)
+  - `message` (textarea)
+  - `privacy_consent` (checkbox, required)
+
+---
+
+# Business Context (for LLM understanding)
+
+## About SOLGAG – סולגג
+SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates itself through full end-to-end project management — from initial feasibility checks and professional planning, through financing assistance and utility submissions, all the way to installation and system handover. SOLGG works with experienced subcontractor installers and prides itself on transparent, personalized service that guides the client through every step of the process. The brand conveys professionalism, trustworthiness, and a commitment to making solar energy accessible and stress-free for Israeli homeowners and business owners.
+
+## Services/Products
+- תכנון מקצועי לפני התקנה
+- בדיקת כדאיות כלכלית
+- דיוק עלויות לפני ביצוע
+- סיוע בקבלת מימון סולרי
+- טיפול בהגשות לחברת החשמל
+- עבודה עם מתקינים מנוסים
+- שירות אישי וליווי עד מסירה
+
+## Target Audience
+- בעלי בתים פרטיים ועסקים בישראל המתעניינים במערכות סולריות
+- בעלי בתים פרטיים
+- עסקים מקדמי קיימות
+- קבלנים לבניית בתים חדשים
+
+## Industry
+אנרגיה סולארית / אנרגיה מתחדשת
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://solgag-8fbefe98.zappy5.app/sitemap.xml
+- Robots: https://solgag-8fbefe98.zappy5.app/robots.txt
+- Flattened page text (for LLMs): https://solgag-8fbefe98.zappy5.app/llms-full.txt

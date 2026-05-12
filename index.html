@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>בדיקת כדאיות כלכלית — SOLGAG – סולגג</title>
+    <meta name="description" content="SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates ">
+    <meta name="keywords" content="בדיקת כדאיות כלכלית, תכנון מערכת סולארית לבית פרטי, בדיקת כדאיות כלכלית פאנלים סולאריים, מימון מערכת סולארית לעסקים">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '8fbefe98-b01d-4607-a18d-50ab0d344325',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="בדיקת כדאיות כלכלית — SOLGAG – סולגג">
+    <meta property="og:description" content="SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="בדיקת כדאיות כלכלית — SOLGAG – סולגג">
+    <meta name="twitter:description" content="SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates ">
+    <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .skip-link { position: absolute; left: -9999px; top: 0; padding: 12px 18px; background: var(--bg-dark, #1a1a1a); color: var(--text-light, #fff); font-weight: 600; border-radius: 0 0 8px 0; z-index: 10000; }
+    .skip-link:focus { left: 0; outline: 2px solid var(--ring, #fff); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 3px; }
+  </style>
+
+
+  
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+      [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 10px !important; padding-right: 28px !important; }
+      .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus (exclude catalog sub-menus that use <a> children instead of <li>) */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))):not(:has(> a)), .sub-menu:not(:has(li)):not(:has(> a)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .navbar .sub-menu.mobile-expanded, .nav-menu .sub-menu.mobile-expanded, #navMenu .sub-menu.mobile-expanded { max-height: none !important; overflow-y: visible !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-light) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-light) !important; white-space: normal !important; }
+        .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+        [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 0 !important; padding-right: 28px !important; }
+        .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+        .nav-menu.active, #navMenu.active { max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-light) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
+      @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
+      @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
+      @media (max-width: 768px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+      @media (min-width: 769px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+  <nav class="navbar" dir="rtl">
+  <!-- Mobile buttons: MUST be direct children of .navbar -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+
+  <button class="phone-header-btn" data-phone="[business_phone]" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+
+  <!-- nav-container: REQUIRED wrapper for layout elements -->
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link"><img class="logo" src="/assets/site-----image-1.webp" alt="SOLGAG – סולגג"></a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="#features">יתרונות</a></li><li><a href="#about">אודות</a></li><li><a href="#process">תהליך</a></li><li><a href="#testimonials">המלצות</a></li><li><a href="#stats">נתונים</a></li></ul></div>
+
+    
+
+    <div class="nav-cta-container">
+      <a href="#cta" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .navbar,
+          nav.navbar {
+            min-height: 70px !important;
+          }
+
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            transform: none !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-light)) !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+
+          html[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          body[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] header .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] nav .phone-header-btn {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '0', 'important');
+          mobileToggle.style.setProperty('bottom', '0', 'important');
+          mobileToggle.style.setProperty('margin-top', 'auto', 'important');
+          mobileToggle.style.setProperty('margin-bottom', 'auto', 'important');
+          mobileToggle.style.setProperty('transform', 'none', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '0', 'important');
+          phoneBtn.style.setProperty('bottom', '0', 'important');
+          phoneBtn.style.setProperty('margin-top', 'auto', 'important');
+          phoneBtn.style.setProperty('margin-bottom', 'auto', 'important');
+          phoneBtn.style.setProperty('transform', 'none', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu handler (shared by click and touchend)
+    function handleToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+      const closeIcon = newToggle.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        console.log('[Navbar] Menu opened');
+      }
+    }
+    
+    // Use click for desktop/emulation and touchend as iOS Safari fallback.
+    // Prevent double-fire with a timestamp guard.
+    var lastToggleTime = 0;
+    function guardedToggle(e) {
+      var now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+      handleToggle(e);
+    }
+    
+    newToggle.addEventListener('click', guardedToggle);
+    newToggle.addEventListener('touchend', guardedToggle);
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '[business_phone]';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // WhatsApp button visibility is now controlled via CSS (siteSettings).
+    // No JS-based desktop hiding — the button is visible on both mobile and desktop by default.
+  });
+})();
+
+</script>
+  
+  <main id="main">
+    <section data-band-index="0" id="hero" class="index-hero-section" data-layout-spec="בית-hero" dir="rtl" data-hero-type="fullscreen-scrim">
+  <!-- Background Image -->
+  <div class="index-hero-bg">
+    <img loading="eager" fetchpriority="high" data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="Aerial and close-up view of clean modern solar panels installed on a residential rooftop in Israel, warm golden morning or late-afternoon sunlight casting long shadows across the panels, Mediterranean-style house visible in background, clear blue sky, professional quality photography, editorial feel, warm amber and deep blue tones" width="1200" height="700" src="" alt="פאנלים סולאריים על גג בית פרטי בישראל באור שמש חמים">
+  </div>
+
+  <!-- Dark Scrim Overlay -->
+  <div class="index-hero-scrim" aria-hidden="true"></div>
+
+  <!-- Decorative sun-path motif (upper end/left area) -->
+  <div class="index-hero-sunpath" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" width="340" height="340">
+      <circle cx="170" cy="170" r="140" stroke="rgba(245,166,35,0.13)" stroke-width="2" fill="none"></circle>
+      <circle cx="170" cy="170" r="105" stroke="rgba(245,166,35,0.09)" stroke-width="1.5" fill="none"></circle>
+      <circle cx="170" cy="170" r="70" stroke="rgba(245,166,35,0.07)" stroke-width="1" fill="none"></circle>
+      <!-- sun rays -->
+      <line x1="170" y1="10" x2="170" y2="40" stroke="rgba(245,166,35,0.18)" stroke-width="1.5"></line>
+      <line x1="269" y1="71" x2="248" y2="92" stroke="rgba(245,166,35,0.14)" stroke-width="1.5"></line>
+      <line x1="330" y1="170" x2="300" y2="170" stroke="rgba(245,166,35,0.14)" stroke-width="1.5"></line>
+      <line x1="269" y1="269" x2="248" y2="248" stroke="rgba(245,166,35,0.10)" stroke-width="1.5"></line>
+      <line x1="71" y1="71" x2="92" y2="92" stroke="rgba(245,166,35,0.10)" stroke-width="1.5"></line>
+      <line x1="10" y1="170" x2="40" y2="170" stroke="rgba(245,166,35,0.10)" stroke-width="1.5"></line>
+    </svg>
+  </div>
+
+  <!-- Content Overlay -->
+  <div class="index-hero-container">
+    <div class="index-hero-content">
+      <!-- Label -->
+      <span class="index-hero-label">אנרגיה סולארית לבית ולעסק</span>
+
+      <!-- H1 -->
+      <h1 class="index-hero-h1">חסכו בחשמל —<br>עם מערכת סולארית<br>שמותקנת נכון</h1>
+
+      <!-- H3 subtitle -->
+      <h3 class="index-hero-subtitle">סולגג מלווה אתכם מבדיקת הכדאיות הכלכלית, דרך התכנון, המימון וההגשה לחברת החשמל — עד להתקנה ומסירת המערכת. שקט נפשי מלא, מקצה לקצה.</h3>
+
+      <!-- CTAs -->
+      <div class="index-hero-ctas">
+        <a href="#contact" class="index-hero-btn-primary">
+          <i class="fa-solid fa-solar-panel"></i>
+          בדיקת התאמה ללא התחייבות
+        </a>
+        <a href="#contact" class="index-hero-btn-ghost">
+          דברו עם יועץ ←
+        </a>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="index-hero-trust">
+        <div class="index-hero-trust-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>ליווי מלא לאורך כל הדרך</span>
+        </div>
+        <div class="index-hero-trust-item">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <span>סיוע במימון סולרי</span>
+        </div>
+        <div class="index-hero-trust-item">
+          <i class="fa-solid fa-star"></i>
+          <span>מתקינים מנוסים ומוסמכים</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Divider -->
+  <div class="index-hero-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,52 Q120,38 240,48 T480,42 Q600,36 720,46 T960,40 Q1080,34 1200,44 T1440,48 L1440,80 Z" fill="#EEF2EE"></path>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="1" id="features" class="index-features-section" data-layout-spec="בית-features" dir="rtl">
+  <!-- Decorative background texture -->
+  <div class="index-features-bg-texture" aria-hidden="true"></div>
+  <!-- Sun circle decorative accent -->
+  <div class="index-features-sun-accent" aria-hidden="true"></div>
+
+  <div class="index-features-container">
+    <!-- Intro Block -->
+    <div class="index-features-intro">
+      <span class="index-features-label">היתרון שלנו</span>
+      <h2 class="index-features-title">למה לבחור בסולגג?</h2>
+      <p class="index-features-subtitle">אנחנו לא רק מתקינים פאנלים — אנחנו מלווים אתכם בכל שלב, מהבדיקה הראשונית ועד מסירת המערכת הפועלת. שקיפות מלאה, תכנון מקצועי, ושירות אישי לאורך כל הדרך.</p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="index-features-grid">
+
+      <!-- Card 1 -->
+      <article class="index-feature-card">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 20h20"></path><path d="M5 20V10l7-7 7 7v10"></path><path d="M9 20v-6h6v6"></path>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>תכנון מקצועי לפני התקנה</h3>
+          <p>כל פרויקט מתחיל בתכנון מדויק המותאם לגג, לצריכה ולצרכים הספציפיים שלכם — לפני שמגיע ולו ברג אחד.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="index-feature-card">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line><circle cx="12" cy="12" r="5"></circle>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>בדיקת כדאיות כלכלית</h3>
+          <p>מבצעים עבורכם בדיקת כדאיות כלכלית מלאה לפני כל התחייבות — כדי שתדעו בדיוק מה תחסכו ומתי ההשקעה תחזיר את עצמה.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="index-feature-card">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>דיוק עלויות לפני ביצוע</h3>
+          <p>מקבלים הצעת מחיר שקופה ומפורטת לפני תחילת העבודה — ללא הפתעות, ללא תוספות בלתי צפויות.</p>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="index-feature-card">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>סיוע בקבלת מימון סולרי</h3>
+          <p>מסייעים לכם לאתר ולממש את אפשרויות המימון המתאימות ביותר — הלוואות סולריות, מסלולי תשלום ומענקים.</p>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="index-feature-card">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>טיפול בהגשות לחברת החשמל</h3>
+          <p>מנהלים עבורכם את כל הבירוקרטיה מול חברת החשמל — הגשות, אישורים וחיבור לרשת — כך שאתם לא צריכים להתעסק בכלום.</p>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="index-feature-card">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>עבודה עם מתקינים מנוסים</h3>
+          <p>עובדים עם קבלני משנה מנוסים ומוסמכים בלבד — כך שהתקנת מערכת סולארית לבית פרטי מתבצעת ברמה הגבוהה ביותר.</p>
+        </div>
+      </article>
+
+      <!-- Card 7 — centered in last row -->
+      <article class="index-feature-card index-feature-card--last">
+        <div class="index-feature-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="index-feature-content">
+          <h3>שירות אישי וליווי עד מסירה</h3>
+          <p>איש קשר אחד לאורך כל הפרויקט — מהשיחה הראשונה ועד הרגע שהמערכת עולה לאוויר ואתם מתחילים לחסוך.</p>
+        </div>
+      </article>
+
+    </div>
+    <!-- /Features Grid -->
+  </div>
+
+  <!-- Bottom wave divider -->
+  <div class="index-features-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,36 Q120,18 240,30 T480,24 Q600,18 720,30 T960,22 Q1080,16 1200,28 T1440,20 L1440,72 Z" fill="#F2F0EB"></path>
+      <path d="M0,72 L0,38 Q120,20 240,32 T480,26 Q600,20 720,32 T960,24 Q1080,18 1200,30 T1440,22 L1440,72 Z" fill="var(--border-light)" opacity="0.5"></path>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="2" id="about" class="index-about-section" data-layout-spec="בית-about" dir="rtl">
+  <!-- Decorative sun-circle accent -->
+  <div class="about-sun-accent" aria-hidden="true"></div>
+
+  <div class="about-container">
+    <!-- Content Column (START = RIGHT in RTL) -->
+    <div class="about-content-col">
+      <span class="about-eyebrow">מי אנחנו</span>
+      <h2 class="about-heading">סולגג – ליווי מקצועי לאורך כל הדרך</h2>
+      <p class="about-paragraph">סולגג היא חברה ישראלית להקמת מערכות סולריות לבתים פרטיים ולעסקים. אנחנו מספקים ליווי אישי ומקצועי משלב ההתעניינות הראשוני ועד הפעלת המערכת – כולל <strong>בדיקת כדאיות כלכלית</strong>, תכנון, סיוע במימון, הגשות לחברת החשמל, ניהול ההתקנה ומסירה מסודרת. אנו עובדים עם מתקינים מנוסים כקבלני משנה ומנהלים עבורכם את כל תהליך הפרויקט בצורה ברורה ושקופה – כך שתוכלו להתמקד בתוצאה בלבד.</p>
+
+      <!-- Trust Qualities -->
+      <ul class="about-trust-list">
+        <li class="about-trust-item">
+          <span class="about-trust-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.8"></circle>
+              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <div class="about-trust-text">
+            <strong>ניהול פרויקט מלא</strong>
+            <span>מהבדיקה הראשונה ועד מסירת המערכת – הכל בידיים שלנו</span>
+          </div>
+        </li>
+        <li class="about-trust-item">
+          <span class="about-trust-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.8"></circle>
+              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <div class="about-trust-text">
+            <strong>שקיפות מלאה ותמחור מדויק</strong>
+            <span>הצעת מחיר מפורטת לפני כל שלב – ללא הפתעות</span>
+          </div>
+        </li>
+        <li class="about-trust-item">
+          <span class="about-trust-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.8"></circle>
+              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <div class="about-trust-text">
+            <strong>שירות אישי ומותאם</strong>
+            <span>כל לקוח מקבל ליווי צמוד ומענה מהיר לאורך כל הדרך</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Image Column (END = LEFT in RTL) -->
+    <div class="about-image-col">
+      <!-- Peeking backplate -->
+      <div class="about-backplate" aria-hidden="true"></div>
+
+      <!-- Main image -->
+      <figure class="about-image-figure">
+        <img loading="lazy" decoding="async" data-placeholder="index-about-image-1" data-context="Professional aerial view of a modern Israeli residential rooftop with newly installed solar panels arranged in neat rows, warm Mediterranean afternoon sunlight casting gentle shadows, clean architectural geometry, blue sky background, high quality professional photography, solar energy installation" width="620" height="480" src="" alt="מערכת סולארית מותקנת על גג בית פרטי – סולגג" class="about-main-image">
+        <!-- Floating dot accent -->
+        <span class="about-dot-accent" aria-hidden="true"></span>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Bottom contour-map divider -->
+  <div class="about-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,70 L0,28 Q60,18 120,26 T240,20 Q300,26 360,16 T480,22 Q540,18 600,24 T720,16 Q780,22 840,18 T960,24 Q1020,18 1080,26 T1200,20 L1200,70 Z" fill="#D8E0DA"></path>
+      <path d="M0,70 L0,38 Q60,30 120,36 T240,30 Q300,36 360,26 T480,32 Q540,28 600,34 T720,26 Q780,32 840,28 T960,34 Q1020,28 1080,36 T1200,30 L1200,70 Z" fill="#D8E0DA" fill-opacity="0.6"></path>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="3" class="index-process-section" data-layout-spec="בית-process" dir="rtl">
+  <!-- Background texture overlay -->
+  <div class="index-process-section__texture" aria-hidden="true"></div>
+
+  <div class="index-process-section__container">
+    <!-- Section Header -->
+    <div class="index-process-section__header">
+      <span class="index-process-section__label">איך זה עובד</span>
+      <h2 class="index-process-section__title">תהליך ברור, ליווי מלא —<br>מהשיחה הראשונה ועד ההפעלה</h2>
+      <p class="index-process-section__subtitle">סולגג מנהלת עבורכם את כל שלבי הפרויקט בצורה מסודרת ושקופה, כך שתוכלו לנוח בשקט בזמן שהמערכת הסולארית שלכם מתגשמת.</p>
+    </div>
+
+    <!-- Steps Grid -->
+    <div class="index-process-section__grid">
+
+      <!-- Step 1 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">01</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14 4C8.477 4 4 8.477 4 14s4.477 10 10 10 10-4.477 10-10S19.523 4 14 4zm0 2a8 8 0 110 16A8 8 0 0114 6zm-1 3v5.586l3.707 3.707-1.414 1.414L11 15.414V9h2z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">שיחת ייעוץ ראשונית</h3>
+            <p class="index-process-section__card-desc">נשמע את הצרכים שלכם, נסביר את התהליך ונענה על כל שאלה.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">02</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 4h16a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v16h16V6H6zm2 2h8v2H8V8zm0 4h12v2H8v-2zm0 4h6v2H8v-2z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">בדיקת חשבון חשמל ונתוני הגג</h3>
+            <p class="index-process-section__card-desc">ניתוח צריכת החשמל ובדיקת כדאיות כלכלית מדויקת בהתאם לנתוני הנכס.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">03</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14 3l10 5v6c0 5.523-4.253 10.685-10 12C8.253 24.685 4 19.523 4 14V8l10-5zm0 2.236L6 9.354V14c0 4.418 3.386 8.576 8 9.93 4.614-1.354 8-5.512 8-9.93V9.354L14 5.236zm3.707 5.057l1.414 1.414L12 18.828l-4.121-4.121 1.414-1.414L12 16l5.707-5.707z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">הצעה ראשונית</h3>
+            <p class="index-process-section__card-desc">הצעת מחיר שקופה ומפורטת לפני כל התחייבות — ללא הפתעות.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">04</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20 4a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V6a2 2 0 012-2h2V3h2v1h4V3h2v1h2zM8 6v2h12V6H8zm0 4v10h12V10H8zm2 2h2v2h-2v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2h-2v-2zm4 0h2v2h-2v-2z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">מקדמה לתכנון מקצועי</h3>
+            <p class="index-process-section__card-desc">תשלום מקדמה קטן מפעיל את שלב התכנון המדויק של המערכת עבורכם.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">05</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14 2a12 12 0 110 24A12 12 0 0114 2zm0 2a10 10 0 100 20A10 10 0 0014 4zm0 2a8 8 0 110 16A8 8 0 0114 6zm0 2a6 6 0 100 12A6 6 0 0014 8zm0 2a4 4 0 110 8 4 4 0 010-8zm0 2a2 2 0 100 4 2 2 0 000-4z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">הכנת תוכנית מדויקת</h3>
+            <p class="index-process-section__card-desc">תכנון מערכת סולארית לבית פרטי ברמת הנדסית מלאה — גודל, מיקום, תפוקה.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 6 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">06</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14 2l3.09 6.26L24 9.27l-5 4.87 1.18 6.88L14 17.77l-6.18 3.25L9 14.14 4 9.27l6.91-1.01L14 2zm0 3.17L11.72 9.9 6.5 10.63l3.75 3.65-.89 5.17L14 16.9l4.64 2.44-.89-5.17 3.75-3.65-5.22-.73L14 5.17z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">הצעה סופית</h3>
+            <p class="index-process-section__card-desc">הצעה מפורטת ומחייבת עם דיוק עלויות מלא לפני ביצוע — אתם מחליטים.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 7 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">07</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 6h20v2H4V6zm0 4h20v2H4v-2zm0 4h12v2H4v-2zm14 1l6 4-6 4V15z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">מימון והגשה לחברת החשמל</h3>
+            <p class="index-process-section__card-desc">מטפלים עבורכם בסיוע לקבלת מימון סולרי ובכל ההגשות הבירוקרטיות.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 8 -->
+      <article class="index-process-section__card">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">08</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 4h8l2 4H8l2-4zm-4 6h16l-2 14H8L6 10zm4 2l1 10h6l1-10H10zm3 2v6h2v-6h-2z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">התקנה על ידי מתקינים מנוסים</h3>
+            <p class="index-process-section__card-desc">צוות מתקינים מקצועי ומנוסה מגיע לאתר ומתקין את המערכת בתקן הגבוה ביותר.</p>
+          </div>
+        </div>
+        <div class="index-process-section__connector" aria-hidden="true"></div>
+      </article>
+
+      <!-- Step 9 -->
+      <article class="index-process-section__card index-process-section__card--final">
+        <div class="index-process-section__card-inner">
+          <span class="index-process-section__step-num" aria-hidden="true">09</span>
+          <div class="index-process-section__card-content">
+            <div class="index-process-section__icon-wrap index-process-section__icon-wrap--accent">
+              <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14 3a1 1 0 011 1v2a1 1 0 11-2 0V4a1 1 0 011-1zm7.071 2.929a1 1 0 010 1.414l-1.414 1.414a1 1 0 11-1.414-1.414l1.414-1.414a1 1 0 011.414 0zM6.929 5.929l1.414 1.414A1 1 0 116.93 8.757L5.515 7.343a1 1 0 011.414-1.414zM14 8a6 6 0 110 12A6 6 0 0114 8zm0 2a4 4 0 100 8 4 4 0 000-8zm9 3a1 1 0 110 2h-2a1 1 0 110-2h2zm-18 0a1 1 0 110 2H3a1 1 0 110-2h2zm14.556 5.142a1 1 0 010 1.414l-1.414 1.414a1 1 0 11-1.414-1.414l1.414-1.414a1 1 0 011.414 0zm-11.112 0l1.414 1.414a1 1 0 11-1.414 1.414L7.03 19.556a1 1 0 011.414-1.414zM14 21a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h3 class="index-process-section__card-title">הפעלה ומסירה</h3>
+            <p class="index-process-section__card-desc">המערכת עולה לאוויר, אתם מתחילים לחסוך — ואנחנו כאן לכל שאלה גם אחרי המסירה.</p>
+          </div>
+        </div>
+        <div class="index-process-section__final-badge" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="28" fill="var(--accent)" opacity="0.15"></circle>
+            <circle cx="28" cy="28" r="20" fill="var(--accent)" opacity="0.25"></circle>
+            <circle cx="28" cy="28" r="12" fill="var(--accent)" opacity="0.5"></circle>
+          </svg>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="index-process-section__cta">
+      <p class="index-process-section__cta-text">מוכנים להתחיל? שיחת הייעוץ הראשונה — ללא עלות וללא התחייבות</p>
+      <a href="#contact" class="index-process-section__cta-btn">בדיקת התאמה ללא התחייבות <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <!-- Bottom Divider -->
+  <div class="index-process-section__divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="dividerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.6"></stop>
+          <stop offset="50%" stop-color="var(--accent)" stop-opacity="0.5"></stop>
+          <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.6"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,72 L0,32 Q180,8 360,28 T720,16 T1080,28 T1440,12 L1440,72 Z" fill="#0F2347"></path>
+      <line x1="0" y1="32" x2="1440" y2="12" stroke="url(#dividerGrad)" stroke-width="1.5" opacity="0.7"></line>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="4" id="testimonials" class="index-testimonials-section" data-layout-spec="בית-testimonials" dir="rtl">
+  <!-- Decorative radial glow -->
+  <div class="itm-glow-orb" aria-hidden="true"></div>
+  <!-- Grain texture overlay -->
+  <div class="itm-grain" aria-hidden="true"></div>
+
+  <div class="itm-container">
+    <!-- Section header -->
+    <div class="itm-header">
+      <span class="itm-eyebrow">מה אומרים עלינו הלקוחות</span>
+      <h2 class="itm-title">אנשים אמיתיים. תוצאות אמיתיות.</h2>
+      <p class="itm-subtitle">מאות משפחות ועסקים בישראל כבר עברו את התהליך עם סולגג — ומספרים על החוויה</p>
+    </div>
+
+    <!-- Testimonial grid -->
+    <div class="itm-grid">
+
+      <!-- Card 1 — LARGE / Featured (start side) -->
+      <article class="itm-card itm-card--featured">
+        <div class="itm-quote-mark" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36V22.5C0 10.074 7.2 3.006 21.6 0L24 4.5C17.4 6.174 13.8 9.906 13.2 15.75H21.6V36H0ZM26.4 36V22.5C26.4 10.074 33.6 3.006 48 0L50.4 4.5C43.8 6.174 40.2 9.906 39.6 15.75H48V36H26.4Z" fill="currentColor" opacity="0.18"></path>
+          </svg>
+        </div>
+        <blockquote class="itm-quote">
+          <p>"פניתי לסולגג אחרי שניסיתי להתמצא לבד בכל הבירוקרטיה — ופשוט נשברתי. מהרגע הראשון הם הסבירו לי כל שלב, דאגו להגשות לחברת החשמל, ואפילו עזרו לי לסגור מימון נוח. לא הרגשתי לבד אף רגע בתהליך."</p>
+        </blockquote>
+        <footer class="itm-card-footer">
+          <div class="itm-avatar" aria-hidden="true">
+            <span>ד</span>
+          </div>
+          <div class="itm-client-info">
+            <strong class="itm-client-name">דנה כהן</strong>
+            <span class="itm-client-type">בעלת בית פרטי · פתח תקווה</span>
+          </div>
+        </footer>
+        <div class="itm-result-badge">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          חיסכון של כ-70% בחשבון החשמל
+        </div>
+      </article>
+
+      <!-- Card 2 — Standard -->
+      <article class="itm-card">
+        <div class="itm-quote-mark" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36V22.5C0 10.074 7.2 3.006 21.6 0L24 4.5C17.4 6.174 13.8 9.906 13.2 15.75H21.6V36H0ZM26.4 36V22.5C26.4 10.074 33.6 3.006 48 0L50.4 4.5C43.8 6.174 40.2 9.906 39.6 15.75H48V36H26.4Z" fill="currentColor" opacity="0.18"></path>
+          </svg>
+        </div>
+        <blockquote class="itm-quote">
+          <p>"ניהלנו את כל הפרויקט דרך סולגג לעסק שלנו. ההצעה הייתה שקופה לחלוטין — ידענו בדיוק מה אנחנו משלמים ולמה. הצוות שלהם עשה את כל העבודה מול הרשויות, ואנחנו קיבלנו מערכת עובדת בלי כאב ראש."</p>
+        </blockquote>
+        <footer class="itm-card-footer">
+          <div class="itm-avatar" aria-hidden="true">
+            <span>מ</span>
+          </div>
+          <div class="itm-client-info">
+            <strong class="itm-client-name">משה לוי</strong>
+            <span class="itm-client-type">בעל עסק · ראשון לציון</span>
+          </div>
+        </footer>
+        <div class="itm-result-badge">
+          <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+          החזר השקעה תוך פחות מ-5 שנים
+        </div>
+      </article>
+
+      <!-- Card 3 — Standard -->
+      <article class="itm-card">
+        <div class="itm-quote-mark" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36V22.5C0 10.074 7.2 3.006 21.6 0L24 4.5C17.4 6.174 13.8 9.906 13.2 15.75H21.6V36H0ZM26.4 36V22.5C26.4 10.074 33.6 3.006 48 0L50.4 4.5C43.8 6.174 40.2 9.906 39.6 15.75H48V36H26.4Z" fill="currentColor" opacity="0.18"></path>
+          </svg>
+        </div>
+        <blockquote class="itm-quote">
+          <p>"הדבר שהכי הפתיע אותי היה בדיקת הכדאיות הכלכלית שעשו לפני שהתחלנו — לא ניסו למכור לי כלום, פשוט הציגו עובדות. זה נתן לי ביטחון מלא לפני שחתמתי. ממליץ בחום לכל מי שמהסס."</p>
+        </blockquote>
+        <footer class="itm-card-footer">
+          <div class="itm-avatar" aria-hidden="true">
+            <span>י</span>
+          </div>
+          <div class="itm-client-info">
+            <strong class="itm-client-name">יוסי אברהם</strong>
+            <span class="itm-client-type">בעל בית פרטי · חיפה</span>
+          </div>
+        </footer>
+        <div class="itm-result-badge">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          תהליך שקוף מהייעוץ ועד ההפעלה
+        </div>
+      </article>
+
+    </div>
+    <!-- /grid -->
+
+    <!-- Stars row -->
+    <div class="itm-stars-row" aria-label="דירוג 5 כוכבים">
+      <i class="fa-solid fa-star" aria-hidden="true"></i>
+      <i class="fa-solid fa-star" aria-hidden="true"></i>
+      <i class="fa-solid fa-star" aria-hidden="true"></i>
+      <i class="fa-solid fa-star" aria-hidden="true"></i>
+      <i class="fa-solid fa-star" aria-hidden="true"></i>
+      <span>מעל 200 לקוחות מרוצים ברחבי הארץ</span>
+    </div>
+
+  </div>
+  <!-- /container -->
+
+  <!-- Bottom torn-paper divider → transitions to light stats section -->
+  <div class="itm-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,38 Q30,32 60,40 T120,34 Q160,38 200,30 T280,36 Q320,30 370,38 T450,32 Q490,38 540,30 T620,36 Q660,30 710,38 T790,32 Q840,38 890,30 T970,36 Q1010,30 1060,38 T1140,32 Q1170,36 1200,30 L1200,72 Z" fill="#F2F0EB"></path>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="5" id="stats" class="index-stats-section" data-layout-spec="בית-stats" dir="rtl">
+  <!-- Rooftop grid micro texture overlay -->
+  <div class="index-stats-texture" aria-hidden="true"></div>
+
+  <div class="index-stats-container">
+    <!-- Intro Block -->
+    <div class="index-stats-intro">
+      <span class="index-stats-eyebrow">למה לבחור בסולגג?</span>
+      <h2 class="index-stats-heading">ביטחון מלא בכל שלב של הדרך</h2>
+      <p class="index-stats-subtext">אנחנו לא רק מתקינים מערכות סולריות — אנחנו מנהלים עבורך את כל הפרויקט, מהבדיקה הראשונית ועד מסירת המערכת המופעלת. שקיפות מלאה, ליווי אישי, ואפס הפתעות.</p>
+    </div>
+
+    <!-- Trust Metrics Grid -->
+    <div class="index-stats-metrics">
+      <article class="index-stats-card">
+        <div class="index-stats-card-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+        </div>
+        <div class="index-stats-card-content">
+          <h3>ליווי מלא מקצה לקצה</h3>
+          <p>מהשיחה הראשונה ועד הפעלת המערכת — אנחנו לצדך בכל שלב, ומנהלים עבורך את כל ההיבטים הבירוקרטיים והמקצועיים.</p>
+        </div>
+      </article>
+
+      <article class="index-stats-card">
+        <div class="index-stats-card-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+        </div>
+        <div class="index-stats-card-content">
+          <h3>תכנון מקצועי לפני ביצוע</h3>
+          <p>כל פרויקט מתחיל בבדיקת כדאיות כלכלית מעמיקה ותוכנית מדויקת — כך שאתה יודע בדיוק מה מקבל, עוד לפני שמתחילים.</p>
+        </div>
+      </article>
+
+      <article class="index-stats-card">
+        <div class="index-stats-card-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg>
+        </div>
+        <div class="index-stats-card-content">
+          <h3>סיוע במימון והגשות</h3>
+          <p>מסייעים בקבלת מימון סולרי מתאים ומטפלים בכל ההגשות לחברת החשמל — אנחנו עושים את הבירוקרטיה בשבילך.</p>
+        </div>
+      </article>
+
+      <article class="index-stats-card">
+        <div class="index-stats-card-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="index-stats-card-content">
+          <h3>מתקינים מנוסים ומוכחים</h3>
+          <p>עובדים עם קבלני משנה מנוסים ומוכחים בלבד — כל התקנה מבוצעת לפי הסטנדרטים המקצועיים הגבוהים ביותר.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Trust Badges Band -->
+    <div class="index-stats-badges">
+      <div class="index-stats-badge">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <span>שקיפות מלאה בתמחור</span>
+      </div>
+      <div class="index-stats-badge">
+        <i class="fa-solid fa-file-invoice" aria-hidden="true"></i>
+        <span>טיפול בהגשות לחברת החשמל</span>
+      </div>
+      <div class="index-stats-badge">
+        <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i>
+        <span>סיוע בקבלת מימון סולרי</span>
+      </div>
+      <div class="index-stats-badge">
+        <i class="fa-solid fa-drafting-compass" aria-hidden="true"></i>
+        <span>תכנון מערכת סולארית לבית פרטי</span>
+      </div>
+      <div class="index-stats-badge">
+        <i class="fa-solid fa-headset" aria-hidden="true"></i>
+        <span>שירות אישי לאורך כל הדרך</span>
+      </div>
+      <div class="index-stats-badge">
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+        <span>הפעלה ומסירה מסודרת</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Divider: dramatic deep-ink curved sweep from END side -->
+  <div class="index-stats-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1200,100 L0,100 L0,60 Q200,20 400,50 Q600,80 800,30 Q1000,-10 1200,40 Z" fill="#0F2347"></path>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="6" id="cta" class="index-cta-section" dir="rtl" data-layout-spec="בית-cta">
+  <!-- Decorative background elements -->
+  <div class="index-cta-bg-glow" aria-hidden="true"></div>
+  <div class="index-cta-contour" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <g stroke="rgba(255,255,255,0.04)" stroke-width="1.5" fill="none">
+        <ellipse cx="600" cy="300" rx="200" ry="200"></ellipse>
+        <ellipse cx="600" cy="300" rx="280" ry="280"></ellipse>
+        <ellipse cx="600" cy="300" rx="360" ry="360"></ellipse>
+        <ellipse cx="600" cy="300" rx="440" ry="440"></ellipse>
+        <ellipse cx="600" cy="300" rx="520" ry="520"></ellipse>
+        <line x1="600" y1="0" x2="600" y2="600"></line>
+        <line x1="0" y1="300" x2="1200" y2="300"></line>
+        <line x1="0" y1="0" x2="1200" y2="600"></line>
+        <line x1="1200" y1="0" x2="0" y2="600"></line>
+      </g>
+    </svg>
+  </div>
+
+  <div class="index-cta-container">
+    <!-- Content Column (START = RIGHT in RTL) -->
+    <div class="index-cta-content">
+      <div class="index-cta-badge">בדיקת התאמה חינמית</div>
+      <h2 class="index-cta-heading">מוכנים לגלות כמה תחסכו<br>עם מערכת סולארית?</h2>
+      <p class="index-cta-subtext">השאירו פרטים ונחזור אליכם עם בדיקת כדאיות כלכלית מותאמת אישית — ללא עלות וללא התחייבות. הצוות שלנו ילווה אתכם בכל שלב, מהבדיקה הראשונית ועד הפעלת המערכת.</p>
+
+      <ul class="index-cta-checklist">
+        <li>
+          <span class="index-cta-check-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="9" r="9" fill="rgba(255,122,0,0.2)"></circle>
+              <path d="M5 9.5L7.5 12L13 6.5" stroke="#FF7A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span>שיחת ייעוץ ראשונית ובדיקת נתוני הגג</span>
+        </li>
+        <li>
+          <span class="index-cta-check-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="9" r="9" fill="rgba(255,122,0,0.2)"></circle>
+              <path d="M5 9.5L7.5 12L13 6.5" stroke="#FF7A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span>בדיקת כדאיות כלכלית וחישוב חיסכון צפוי</span>
+        </li>
+        <li>
+          <span class="index-cta-check-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="9" r="9" fill="rgba(255,122,0,0.2)"></circle>
+              <path d="M5 9.5L7.5 12L13 6.5" stroke="#FF7A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span>הצעת מחיר ראשונית ללא עלות</span>
+        </li>
+        <li>
+          <span class="index-cta-check-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="9" r="9" fill="rgba(255,122,0,0.2)"></circle>
+              <path d="M5 9.5L7.5 12L13 6.5" stroke="#FF7A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span>סיוע במימון מערכת סולארית לעסקים ולבתים פרטיים</span>
+        </li>
+        <li>
+          <span class="index-cta-check-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="9" r="9" fill="rgba(255,122,0,0.2)"></circle>
+              <path d="M5 9.5L7.5 12L13 6.5" stroke="#FF7A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span>ליווי מלא עד מסירת המערכת והפעלתה</span>
+        </li>
+      </ul>
+
+      <div class="index-cta-trust-strip">
+        <div class="index-cta-trust-item">
+          <span class="index-cta-trust-num">+500</span>
+          <span class="index-cta-trust-label">מערכות הותקנו</span>
+        </div>
+        <div class="index-cta-trust-divider" aria-hidden="true"></div>
+        <div class="index-cta-trust-item">
+          <span class="index-cta-trust-num">100%</span>
+          <span class="index-cta-trust-label">ליווי אישי</span>
+        </div>
+        <div class="index-cta-trust-divider" aria-hidden="true"></div>
+        <div class="index-cta-trust-item">
+          <span class="index-cta-trust-num">0₪</span>
+          <span class="index-cta-trust-label">לבדיקת ההתאמה</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Column (END = LEFT in RTL) -->
+    <div class="index-cta-form-block">
+      <div class="index-cta-form-header">
+        <h3 class="index-cta-form-title">השאירו פרטים — נחזור אליכם</h3>
+        <p class="index-cta-form-subtitle">מלאו את הטופס ונציג מטעמנו יצור איתכם קשר תוך 24 שעות</p>
+      </div>
+
+      <form class="contact-form index-cta-form" novalidate="">
+        <div class="index-cta-field">
+          <label for="cta-name" class="index-cta-label">שם מלא</label>
+          <input type="text" id="cta-name" name="name" class="index-cta-input" placeholder="ישראל ישראלי" required="">
+        </div>
+        <div class="index-cta-field">
+          <label for="cta-phone" class="index-cta-label">טלפון</label>
+          <input type="tel" id="cta-phone" name="phone" class="index-cta-input" placeholder="05X-XXXXXXX" required="">
+        </div>
+        <div class="index-cta-field">
+          <label for="cta-email" class="index-cta-label">אימייל</label>
+          <input type="email" id="cta-email" name="email" class="index-cta-input" placeholder="your@email.com">
+        </div>
+        <div class="index-cta-field">
+          <label for="cta-message" class="index-cta-label">הערות (אופציונלי)</label>
+          <textarea id="cta-message" name="message" class="index-cta-input index-cta-textarea" placeholder="ספרו לנו בקצרה על הנכס שלכם..." rows="3"></textarea>
+        </div>
+
+        <div class="privacy-consent">
+          <label class="privacy-consent-label">
+            <input type="checkbox" name="privacy_consent" class="privacy-consent-checkbox" required="">
+            <span>קראתי ואני מסכים/ה ל<a href="/terms" target="_blank">תנאי השימוש</a> ול<a href="/privacy" target="_blank">מדיניות הפרטיות</a></span>
+          </label>
+        </div>
+
+        <button type="submit" class="index-cta-submit">
+          <span>שלחו את הפרטים</span>
+          <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 10H5M9 6L5 10L9 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <p class="index-cta-no-obligation">ללא עלות · ללא התחייבות · תגובה תוך יום עסקים</p>
+      </form>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer" dir="rtl">
+  <div class="footer-top">
+    <div class="footer-container">
+      <div class="footer-grid">
+
+        <!-- Company Info -->
+        <div class="footer-col footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="/assets/solgag-logo.webp" alt="SOLGAG – סולגג" class="logo">
+          </div>
+          <p class="footer-tagline">אנרגיה סולארית חכמה לבית ולעסק. אנחנו מובילים את המהפכה הירוקה בישראל עם פתרונות מתחדשים, אמינים ומשתלמים.</p>
+          <div class="footer-social">
+            
+            
+            
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">ניווט מהיר</h4>
+          <div class="footer-heading-line"></div>
+          <ul class="footer-links">
+            <li><a href="#features"><i class="fas fa-chevron-left footer-link-icon"></i>יתרונות</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-left footer-link-icon"></i>אודות</a></li>
+            <li><a href="#process"><i class="fas fa-chevron-left footer-link-icon"></i>תהליך</a></li>
+            <li><a href="#testimonials"><i class="fas fa-chevron-left footer-link-icon"></i>המלצות</a></li>
+            <li><a href="#stats"><i class="fas fa-chevron-left footer-link-icon"></i>נתונים</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-col">
+          <h4 class="footer-heading">צרו קשר</h4>
+          <div class="footer-heading-line"></div>
+          <ul class="footer-contact">
+            <li>
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+              <span class="contact-text"><a href="mailto:[business_email]">[business_email]</a></span>
+            </li>
+            <li>
+              <span class="contact-icon"><i class="fas fa-phone"></i></span>
+              <span class="contact-text"><a href="tel:[business_phone]">[business_phone]</a></span>
+            </li>
+            <li><a href="/"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+              <span class="contact-text">[business_address]</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Sun Badge / CTA Column -->
+        <div class="footer-col footer-cta-col">
+          <h4 class="footer-heading">מוכנים לחסוך?</h4>
+          <div class="footer-heading-line"></div>
+          <div class="footer-sun-badge">
+            <div class="sun-icon-wrap">
+              <i class="fas fa-sun"></i>
+            </div>
+            <p class="sun-text">קבלו הצעת מחיר חינם תוך 24 שעות</p>
+            <a href="#features" class="footer-cta-btn">לפרטים נוספים</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copy">© 2026 SOLGAG – סולגג. כל הזכויות שמורות.</p>
+        <div class="footer-legal">
+          <a href="/privacy">מדיניות פרטיות</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms">תנאי שימוש</a>
+          <span class="footer-sep">|</span>
+          <a href="/accessibility">נגישות</a>
+          <span class="footer-sep">|</span>
+          <a href="https://zappy5.com" target="_blank" class="zappy-attribution">נוצר באמצעות Zappy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+
+    <script id="zappy-navbar-scroll-effect">
+    (function(){
+      var nb=document.querySelector('nav.navbar,.navbar:not(.zappy-catalog-menu)');
+      var cm=document.querySelector('.zappy-catalog-menu,#zappy-catalog-menu');
+      if(!nb)return;
+      var fb='rgba(231,236,232,0.85)';
+      var th=60;
+      var rs=getComputedStyle(document.documentElement);
+      var td=rs.getPropertyValue('--text-dark').trim()||'#1a1a1a';
+      var tl=rs.getPropertyValue('--text-light').trim()||'#ffffff';
+      var st=true?td:tl;
+      nb.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease,box-shadow 0.3s ease';
+      if(cm)cm.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease';
+      var neSel='a,.navbar-brand,.navbar-brand a,.dropdown-toggle,.mobile-toggle,.phone-header-btn,.mobile-hamburger-btn,.mobile-close-btn,.mobile-submenu-toggle,.nav-link';
+      var skipCls=['cart-link','login-link','nav-search-toggle','search-toggle'];
+      function sTC(c,clr){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){var sk=false;if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu')){sk=true;}for(var j=0;j<skipCls.length;j++){if(els[i].classList.contains(skipCls[j])){sk=true;break;}}if(!sk)els[i].style.setProperty('color',clr,'important');}}
+      function cTC(c){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu'))continue;els[i].style.removeProperty('color');}}
+      function applyScrolled(){
+        nb.classList.add('scrolled');
+        if(window.innerWidth>768){
+          nb.style.setProperty('--frosted-text',st);
+          nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('background-color',fb,'important');
+          nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+        }
+        if(cm){cm.classList.add('scrolled');if(window.innerWidth>768){cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}}
+      }
+      function onS(){
+        if(window._zappyNavNoDarkHero) return;
+        if(window.innerWidth<=768){nb.classList.remove('scrolled');cTC(nb);if(cm){cm.classList.remove('scrolled');cTC(cm);}return;}
+        var y=window.scrollY||window.pageYOffset;
+        if(y>th){
+          nb.classList.add('scrolled');nb.style.setProperty('background-color',fb,'important');nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('--frosted-text',st);nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+          if(cm){cm.classList.add('scrolled');cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}
+        }else{
+          nb.classList.remove('scrolled');nb.style.setProperty('background-color','transparent','important');nb.style.removeProperty('background-image');
+          nb.style.removeProperty('--frosted-text');nb.style.backdropFilter='none';nb.style.webkitBackdropFilter='none';nb.style.boxShadow='none';
+          cTC(nb);
+          if(cm){cm.classList.remove('scrolled');cm.style.setProperty('background','transparent','important');cm.style.setProperty('backdrop-filter','none','important');cm.style.setProperty('-webkit-backdrop-filter','none','important');cTC(cm);}
+        }
+      }
+      function sLum(rv,gv,bv){rv/=255;gv/=255;bv/=255;rv=rv<=0.03928?rv/12.92:Math.pow((rv+0.055)/1.055,2.4);gv=gv<=0.03928?gv/12.92:Math.pow((gv+0.055)/1.055,2.4);bv=bv<=0.03928?bv/12.92:Math.pow((bv+0.055)/1.055,2.4);return 0.2126*rv+0.7152*gv+0.0722*bv;}
+      window.addEventListener('scroll',onS,{passive:true});
+      window.addEventListener('resize',onS,{passive:true});
+      onS();
+      var heroEl=document.querySelector('section[class*="hero"],[data-hero-type],main>section:first-child');
+      var hasDH=false;
+      if(heroEl){var hCs=getComputedStyle(heroEl);var hBI=hCs.backgroundImage;if(hBI&&hBI!=='none'){if(hBI.indexOf('url(')!==-1){var hM2=hCs.backgroundColor.match(/\d+/g);if(hM2&&hM2.length>=3){hasDH=sLum(parseInt(hM2[0]),parseInt(hM2[1]),parseInt(hM2[2]))<0.4;}else{hasDH=true;}}else if(hBI.indexOf('gradient')!==-1){var cM=hBI.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/g);if(cM&&cM.length>0){var tLm=0;for(var ci=0;ci<cM.length;ci++){var pts=cM[ci].match(/\d+/g);tLm+=sLum(parseInt(pts[0]),parseInt(pts[1]),parseInt(pts[2]));}hasDH=(tLm/cM.length)<0.4;}else{hasDH=true;}}else{hasDH=true;}}else{var hM=hCs.backgroundColor.match(/\d+/g);if(hM&&hM.length>=3){hasDH=sLum(parseInt(hM[0]),parseInt(hM[1]),parseInt(hM[2]))<0.4;}}}
+      if(!hasDH){window.removeEventListener('scroll',onS);window.removeEventListener('resize',onS);applyScrolled();window._zappyNavNoDarkHero=true;}
+    })();
+    </script>
+</body>
+</html>
