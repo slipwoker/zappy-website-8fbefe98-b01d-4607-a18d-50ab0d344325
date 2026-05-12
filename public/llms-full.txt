@@ -2,13 +2,13 @@
 
 SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates itself through full end-to-end project management — from initial feasibility checks and professional planning, through financing assistance and utility submissions, all the way to installation and system handover. SOLGG works with experienced subcontractor installers and prides itself on transparent, personalized service that guides the client through every step of the process. The brand conveys professionalism, trustworthiness, and a commitment to making solar energy accessible and stress-free for Israeli homeowners and business owners.
 
-Source: https://solgag-8fbefe98.zappy5.app
+Source: https://example.com
 
 ---
 
 ## בדיקת כדאיות כלכלית — SOLGAG – סולגג
 
-URL: https://solgag-8fbefe98.zappy5.app
+URL: https://example.com
 Description: SOLGG (סולגג) is an Israeli solar energy company specializing in the installation of solar systems for private homes and businesses. The company differentiates 
 
 בדיקת כדאיות כלכלית — SOLGAG – סולגג
@@ -951,7 +951,7 @@ Description: SOLGG (סולגג) is an Israeli solar energy company specializing 
 
 ## מדיניות פרטיות
 
-URL: https://solgag-8fbefe98.zappy5.app/privacy
+URL: https://example.com/privacy
 Description: מדיניות הפרטיות שלנו - כיצד אנו אוספים, משתמשים ומגנים על המידע שלכם
 
 מדיניות פרטיות
@@ -1225,7 +1225,7 @@ SOLGAG – סולגג ("החברה", "אנו", "שלנו") מחויבת להגן
 
 ## הצהרת נגישות
 
-URL: https://solgag-8fbefe98.zappy5.app/accessibility
+URL: https://example.com/accessibility
 Description: הצהרת הנגישות שלנו - מחויבותנו לנגישות דיגיטלית
 
 הצהרת נגישות
@@ -1508,7 +1508,7 @@ SOLGAG – סולגג מחויבת להנגיש את השירותים לכלל �
 
 ## תנאי שימוש
 
-URL: https://solgag-8fbefe98.zappy5.app/terms
+URL: https://example.com/terms
 Description: תנאי השימוש באתר - הזכויות והחובות של המשתמשים
 
 תנאי שימוש
