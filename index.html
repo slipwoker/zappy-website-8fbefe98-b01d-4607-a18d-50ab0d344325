@@ -252,6 +252,388 @@
     <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
     <!-- Mickidum Accessibility Toolbar -->
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.index-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+}
+
+/* ── Background Image ── */
+.index-hero-section .index-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.index-hero-section .index-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* ── Scrim Overlay ── */
+.index-hero-section .index-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(105deg,
+      rgba(13, 43, 69, 0.88) 0%,
+      rgba(13, 43, 69, 0.72) 40%,
+      rgba(13, 43, 69, 0.30) 70%,
+      rgba(13, 43, 69, 0.10) 100%
+    );
+}
+
+/* ── Decorative Sun Circle Motif ── */
+.index-hero-section .index-hero-sun-motif {
+  position: absolute;
+  inset-inline-end: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,166,35,0.22) 0%, rgba(245,166,35,0.08) 55%, transparent 75%);
+  z-index: 2;
+  pointer-events: none;
+  border: 2px solid rgba(245,166,35,0.18);
+}
+
+/* ── Container ── */
+.index-hero-section .index-hero-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 160px 32px 40px;
+}
+
+/* ── Content Block ── */
+.index-hero-section .index-hero-content {
+  max-width: 680px;
+  margin-inline-start: 0;
+  text-align: right;
+}
+
+/* ── Eyebrow ── */
+.index-hero-section .index-hero-eyebrow {
+  display: inline-block;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  opacity: 0.95;
+}
+
+/* ── Headline ── */
+.index-hero-section .index-hero-headline {
+  font-family: 'Noto Sans Hebrew', 'Simpler Pro', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text-light);
+  margin: 0 0 20px;
+  text-shadow: 0 2px 24px rgba(13,43,69,0.55);
+}
+
+.index-hero-section .index-hero-accent {
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+  position: relative;
+}
+
+/* ── Subtitle ── */
+.index-hero-section .index-hero-subtitle {
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.88);
+  margin: 0 0 36px;
+  text-shadow: 0 1px 8px rgba(13,43,69,0.45);
+  max-width: 580px;
+}
+
+/* ── CTA Buttons ── */
+.index-hero-section .index-hero-ctas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.index-hero-section .index-hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 15px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(255,107,0,0.38);
+  white-space: nowrap;
+}
+
+.index-hero-section .index-hero-btn-primary:hover {
+  background: #e05e00;
+  border-color: #e05e00;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(255,107,0,0.50);
+}
+
+.index-hero-section .index-hero-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 15px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.65);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.index-hero-section .index-hero-btn-ghost:hover {
+  background: rgba(255,255,255,0.20);
+  border-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(255,255,255,0.18);
+}
+
+/* ── Trust Badges ── */
+.index-hero-section .index-hero-trust {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  background: rgba(13, 43, 69, 0.60);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 20px 28px;
+  max-width: 620px;
+}
+
+.index-hero-section .index-hero-trust-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.index-hero-section .index-hero-trust-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.20);
+  margin: 0 20px;
+  flex-shrink: 0;
+}
+
+.index-hero-section .index-hero-trust-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(245,166,35,0.18);
+  color: var(--accent);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(245,166,35,0.35);
+}
+
+.index-hero-section .index-hero-trust-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.index-hero-section .index-hero-trust-text strong {
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.index-hero-section .index-hero-trust-text span {
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* ── Bottom Divider ── */
+.index-hero-section .index-hero-divider-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.index-hero-section .index-hero-divider-wrapper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Responsive: Tablet ── */
+@media (max-width: 1024px) {
+  .index-hero-section .index-hero-sun-motif {
+    width: 300px;
+    height: 300px;
+    inset-inline-end: -40px;
+  }
+
+  .index-hero-section .index-hero-trust {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .index-hero-section .index-hero-trust-divider {
+    display: none;
+  }
+
+  .index-hero-section .index-hero-trust-item {
+    flex: 0 0 calc(33% - 12px);
+  }
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 768px) {
+  .index-hero-section {
+    min-height: 100svh;
+    padding-bottom: 80px;
+  }
+
+  .index-hero-section .index-hero-container {
+    padding: 110px 16px 32px;
+  }
+
+  .index-hero-section .index-hero-content {
+    max-width: 100%;
+  }
+
+  .index-hero-section .index-hero-headline {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .index-hero-section .index-hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .index-hero-section .index-hero-br {
+    display: none;
+  }
+
+  .index-hero-section .index-hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .index-hero-section .index-hero-btn-primary,
+  .index-hero-section .index-hero-btn-ghost {
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .index-hero-section .index-hero-trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .index-hero-section .index-hero-trust-divider {
+    display: none;
+  }
+
+  .index-hero-section .index-hero-trust-item {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .index-hero-section .index-hero-trust-text strong {
+    white-space: normal;
+  }
+
+  .index-hero-section .index-hero-trust-text span {
+    white-space: normal;
+  }
+
+  .index-hero-section .index-hero-sun-motif {
+    display: none;
+  }
+
+  .index-hero-section .index-hero-scrim {
+    background-image: linear-gradient(
+      160deg,
+      rgba(13, 43, 69, 0.92) 0%,
+      rgba(13, 43, 69, 0.78) 50%,
+      rgba(13, 43, 69, 0.45) 100%
+    );
+  }
+}
+/* ZAPPY_POSTGEN_GUARD_HERO_FONT_CAP:index-hero */
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: min(var(--display-xl, 6rem), 6rem) !important; line-height: var(--leading-display, 1.05); }
+@media (max-width: 768px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: clamp(2rem, 9vw, 3rem) !important; }
+}
+
+</style>
     <link rel="stylesheet" href="/styles.css">
 
     <style id="zappy-dropdown-submenu-styles">
@@ -814,76 +1196,85 @@
 </script>
   
   <main id="main">
-    <section data-band-index="0" id="hero" class="index-hero-section" data-layout-spec="בית-hero" dir="rtl" data-hero-type="fullscreen-scrim">
+    <section class="index-hero-section" data-layout-spec="בית-hero" dir="rtl" data-hero-type="fullscreen-scrim" id="hero">
   <!-- Background Image -->
   <div class="index-hero-bg">
-    <img loading="eager" fetchpriority="high" data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="Aerial and close-up view of clean modern solar panels installed on a residential rooftop in Israel, warm golden morning or late-afternoon sunlight casting long shadows across the panels, Mediterranean-style house visible in background, clear blue sky, professional quality photography, editorial feel, warm amber and deep blue tones" width="1200" height="700" src="" alt="פאנלים סולאריים על גג בית פרטי בישראל באור שמש חמים">
+    <img data-hero-bg="true" data-context="Aerial view of Israeli residential rooftop covered with modern solar panels under bright Mediterranean sunlight. Blue sky with a few clouds. Warm golden-hour light reflecting off the panels. Cinematic wide-angle shot emphasizing scale and energy production. High-end photography style." width="1440" height="900" src="/assets/solgag-section-בית-hero-index-hero-image-1.webp" alt="גג בית ישראלי עם פאנלים סולאריים מודרניים">
   </div>
 
-  <!-- Dark Scrim Overlay -->
+  <!-- Scrim Overlay -->
   <div class="index-hero-scrim" aria-hidden="true"></div>
 
-  <!-- Decorative sun-path motif (upper end/left area) -->
-  <div class="index-hero-sunpath" aria-hidden="true">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" width="340" height="340">
-      <circle cx="170" cy="170" r="140" stroke="rgba(245,166,35,0.13)" stroke-width="2" fill="none"></circle>
-      <circle cx="170" cy="170" r="105" stroke="rgba(245,166,35,0.09)" stroke-width="1.5" fill="none"></circle>
-      <circle cx="170" cy="170" r="70" stroke="rgba(245,166,35,0.07)" stroke-width="1" fill="none"></circle>
-      <!-- sun rays -->
-      <line x1="170" y1="10" x2="170" y2="40" stroke="rgba(245,166,35,0.18)" stroke-width="1.5"></line>
-      <line x1="269" y1="71" x2="248" y2="92" stroke="rgba(245,166,35,0.14)" stroke-width="1.5"></line>
-      <line x1="330" y1="170" x2="300" y2="170" stroke="rgba(245,166,35,0.14)" stroke-width="1.5"></line>
-      <line x1="269" y1="269" x2="248" y2="248" stroke="rgba(245,166,35,0.10)" stroke-width="1.5"></line>
-      <line x1="71" y1="71" x2="92" y2="92" stroke="rgba(245,166,35,0.10)" stroke-width="1.5"></line>
-      <line x1="10" y1="170" x2="40" y2="170" stroke="rgba(245,166,35,0.10)" stroke-width="1.5"></line>
-    </svg>
-  </div>
+  <!-- Decorative sun-circle motif -->
+  <div class="index-hero-sun-motif" aria-hidden="true"></div>
 
-  <!-- Content Overlay -->
+  <!-- Content -->
   <div class="index-hero-container">
     <div class="index-hero-content">
-      <!-- Label -->
-      <span class="index-hero-label">אנרגיה סולארית לבית ולעסק</span>
 
-      <!-- H1 -->
-      <h1 class="index-hero-h1">חסכו בחשמל —<br>עם מערכת סולארית<br>שמותקנת נכון</h1>
+      <!-- Eyebrow label -->
+      <span class="index-hero-eyebrow">אנרגיה סולארית לבית ולעסק</span>
 
-      <!-- H3 subtitle -->
-      <h3 class="index-hero-subtitle">סולגג מלווה אתכם מבדיקת הכדאיות הכלכלית, דרך התכנון, המימון וההגשה לחברת החשמל — עד להתקנה ומסירת המערכת. שקט נפשי מלא, מקצה לקצה.</h3>
+      <!-- Main Headline -->
+      <h1 class="index-hero-headline">
+        הגג שלכם יכול
+        <br>
+        להתחיל <span class="index-hero-accent">לייצר כסף</span>
+      </h1>
 
-      <!-- CTAs -->
+      <!-- Subtitle -->
+      <h3 class="index-hero-subtitle">
+        חסכו 70% ומעלה על חשבון החשמל וייצרו הכנסה פסיבית —
+        <br class="index-hero-br">
+        אנחנו מלווים אתכם בכל שלב, מהתכנון ועד ההפעלה.
+      </h3>
+
+      <!-- CTA Buttons -->
       <div class="index-hero-ctas">
         <a href="#contact" class="index-hero-btn-primary">
           <i class="fa-solid fa-solar-panel"></i>
-          בדיקת התאמה ללא התחייבות
+          בדקו כמה תחסכו
         </a>
         <a href="#contact" class="index-hero-btn-ghost">
-          דברו עם יועץ ←
+          <i class="fa-solid fa-phone"></i>
+          דברו עם מומחה
         </a>
       </div>
 
-      <!-- Trust badges -->
+      <!-- Trust Badges -->
       <div class="index-hero-trust">
         <div class="index-hero-trust-item">
-          <i class="fa-solid fa-shield-halved"></i>
-          <span>ליווי מלא לאורך כל הדרך</span>
+          <span class="index-hero-trust-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          <div class="index-hero-trust-text">
+            <strong>ליווי מלא</strong>
+            <span>מהתכנון ועד ההפעלה</span>
+          </div>
         </div>
+        <div class="index-hero-trust-divider" aria-hidden="true"></div>
         <div class="index-hero-trust-item">
-          <i class="fa-solid fa-file-invoice-dollar"></i>
-          <span>סיוע במימון סולרי</span>
+          <span class="index-hero-trust-icon"><i class="fa-solid fa-bolt"></i></span>
+          <div class="index-hero-trust-text">
+            <strong>חיסכון 70%+ בחשמל</strong>
+            <span>תוצאות מוכחות</span>
+          </div>
         </div>
+        <div class="index-hero-trust-divider" aria-hidden="true"></div>
         <div class="index-hero-trust-item">
-          <i class="fa-solid fa-star"></i>
-          <span>מתקינים מנוסים ומוסמכים</span>
+          <span class="index-hero-trust-icon"><i class="fa-solid fa-star"></i></span>
+          <div class="index-hero-trust-text">
+            <strong>מומחים מוסמכים</strong>
+            <span>מקצועיות ואמינות</span>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- Bottom Divider -->
+  <!-- Bottom divider -->
   <div class="index-hero-divider-wrapper">
     <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,80 L0,52 Q120,38 240,48 T480,42 Q600,36 720,46 T960,40 Q1080,34 1200,44 T1440,48 L1440,80 Z" fill="#EEF2EE"></path>
+      <path d="M0,80 L0,48 Q120,32 240,44 T480,36 Q600,28 720,40 T960,34 Q1080,26 1200,38 T1440,44 L1440,80 Z" fill="#EEF2EE"></path>
     </svg>
   </div>
 </section>
@@ -1277,7 +1668,7 @@
           <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.6"></stop>
         </linearGradient>
       </defs>
-      <path d="M0,72 L0,32 Q180,8 360,28 T720,16 T1080,28 T1440,12 L1440,72 Z" fill="#0F2347"></path>
+      <path d="M0,72 L0,32 Q180,8 360,28 T720,16 T1080,28 T1440,12 L1440,72 Z" fill="#0D2B45"></path>
       <line x1="0" y1="32" x2="1440" y2="12" stroke="url(#dividerGrad)" stroke-width="1.5" opacity="0.7"></line>
     </svg>
   </div>
@@ -1486,7 +1877,7 @@
   <!-- Bottom Divider: dramatic deep-ink curved sweep from END side -->
   <div class="index-stats-divider-wrapper">
     <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1200,100 L0,100 L0,60 Q200,20 400,50 Q600,80 800,30 Q1000,-10 1200,40 Z" fill="#0F2347"></path>
+      <path d="M1200,100 L0,100 L0,60 Q200,20 400,50 Q600,80 800,30 Q1000,-10 1200,40 Z" fill="#0D2B45"></path>
     </svg>
   </div>
 </section>
