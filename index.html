@@ -921,6 +921,340 @@
   }
 }
 </style>
+
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.index-about-section {
+  position: relative;
+  background-color: #0D2B45;
+  background-image:
+    radial-gradient(circle at 10% 80%, rgba(255,107,0,0.08) 0%, transparent 45%),
+    linear-gradient(180deg, #1B3A6B 0%, #0F2347 100%);
+  color: var(--text-light);
+  padding: 90px 20px 80px;
+  overflow: visible;
+  direction: rtl;
+}
+
+/* Decorative large sun circle */
+.index-about-section .about-sun-deco {
+  position: absolute;
+  top: -80px;
+  inset-inline-end: -60px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,0,0.13) 0%, rgba(255,107,0,0.04) 60%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  aria-hidden: true;
+}
+
+.index-about-section .about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  direction: rtl;
+}
+
+/* ── Right column: content ── */
+.index-about-section .about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.index-about-section .about-eyebrow {
+  display: inline-block;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding: 4px 14px;
+  border: 1.5px solid rgba(255,107,0,0.4);
+  border-radius: 20px;
+  background: rgba(255,107,0,0.08);
+}
+
+.index-about-section .about-headline {
+  font-family: 'Noto Sans Hebrew', 'Simpler Pro', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-light);
+  margin: 0 0 20px 0;
+  text-align: right;
+}
+
+.index-about-section .about-body {
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  margin: 0 0 28px 0;
+  text-align: right;
+  max-width: 480px;
+}
+
+/* Checklist */
+.index-about-section .about-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.index-about-section .about-checklist li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-align: right;
+}
+
+.index-about-section .about-checklist .check-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stats row */
+.index-about-section .about-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 36px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+}
+
+.index-about-section .stat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 16px;
+  gap: 4px;
+  text-align: center;
+}
+
+.index-about-section .stat-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.index-about-section .stat-number {
+  font-family: 'Noto Sans Hebrew', 'Simpler Pro', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.index-about-section .stat-label {
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* CTA button */
+.index-about-section .about-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 15px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 28px rgba(255,107,0,0.35);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.index-about-section .about-cta-btn:hover {
+  background: #e05a00;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(255,107,0,0.45);
+}
+
+.index-about-section .about-cta-btn i {
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
+}
+
+.index-about-section .about-cta-btn:hover i {
+  transform: translateX(-4px);
+}
+
+/* ── Left column: image ── */
+.index-about-section .about-image-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.index-about-section .about-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+}
+
+/* Orange corner accent */
+.index-about-section .about-corner-accent {
+  position: absolute;
+  top: -18px;
+  inset-inline-end: -18px;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: var(--accent);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Floating dot accent */
+.index-about-section .about-dot-accent {
+  position: absolute;
+  bottom: 24px;
+  inset-inline-start: -12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.index-about-section .about-photo {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(15,35,71,0.45);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .index-about-section .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* On mobile, image comes after text (below) */
+  .index-about-section .about-content {
+    order: 1;
+  }
+
+  .index-about-section .about-image-col {
+    order: 2;
+  }
+
+  .index-about-section .about-headline {
+    font-size: 1.65rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .index-about-section {
+    padding: 60px 16px 60px;
+  }
+
+  .index-about-section .about-container {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+    padding: 0;
+  }
+
+  .index-about-section .about-body {
+    max-width: 100%;
+  }
+
+  .index-about-section .about-headline {
+    font-size: 1.5rem;
+    line-height: 1.35;
+  }
+
+  .index-about-section .about-photo {
+    height: 280px;
+  }
+
+  .index-about-section .about-stats {
+    max-width: 100%;
+  }
+
+  .index-about-section .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .index-about-section .about-corner-accent {
+    width: 52px;
+    height: 52px;
+    top: -10px;
+    inset-inline-end: -10px;
+  }
+
+  .index-about-section .about-dot-accent {
+    width: 14px;
+    height: 14px;
+    bottom: 14px;
+    inset-inline-start: -6px;
+  }
+
+  .index-about-section .about-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+  }
+
+  .index-about-section .about-sun-deco {
+    width: 180px;
+    height: 180px;
+    top: -40px;
+    inset-inline-end: -30px;
+  }
+}
+</style>
     <link rel="stylesheet" href="/styles.css">
 
     <style id="zappy-dropdown-submenu-styles">
@@ -1561,7 +1895,7 @@
   <!-- Bottom divider -->
   <div class="index-hero-divider-wrapper">
     <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,80 L0,48 Q120,32 240,44 T480,36 Q600,28 720,40 T960,34 Q1080,26 1200,38 T1440,44 L1440,80 Z" fill="#EEF2EE"></path>
+      <path d="M0,80 L0,48 Q120,32 240,44 T480,36 Q600,28 720,40 T960,34 Q1080,26 1200,38 T1440,44 L1440,80 Z" fill="#EEF4FB"></path>
     </svg>
   </div>
 </section>
@@ -1716,78 +2050,58 @@
   </div>
 </section>
 
-<section data-band-index="2" id="about" class="index-about-section" data-layout-spec="בית-about" dir="rtl">
-  <!-- Decorative sun-circle accent -->
-  <div class="about-sun-accent" aria-hidden="true"></div>
+<section class="index-about-section" data-layout-spec="בית-about" dir="rtl" id="about">
+  <!-- Decorative sun circle -->
+  <div class="about-sun-deco" aria-hidden="true"></div>
 
   <div class="about-container">
-    <!-- Content Column (START = RIGHT in RTL) -->
-    <div class="about-content-col">
-      <span class="about-eyebrow">מי אנחנו</span>
-      <h2 class="about-heading">סולגג – ליווי מקצועי לאורך כל הדרך</h2>
-      <p class="about-paragraph">סולגג היא חברה ישראלית להקמת מערכות סולריות לבתים פרטיים ולעסקים. אנחנו מספקים ליווי אישי ומקצועי משלב ההתעניינות הראשוני ועד הפעלת המערכת – כולל <strong>בדיקת כדאיות כלכלית</strong>, תכנון, סיוע במימון, הגשות לחברת החשמל, ניהול ההתקנה ומסירה מסודרת. אנו עובדים עם מתקינים מנוסים כקבלני משנה ומנהלים עבורכם את כל תהליך הפרויקט בצורה ברורה ושקופה – כך שתוכלו להתמקד בתוצאה בלבד.</p>
+    <!-- Right column: text content -->
+    <div class="about-content">
+      <span class="about-eyebrow">אודות סולגג</span>
+      <h2 class="about-headline">ליווי מקצועי מלא —<br>מהבדיקה הראשונה<br>ועד ההפעלה</h2>
+      <p class="about-body">בסולגג אנחנו מאמינים שמעבר לאנרגיה סולארית צריך להיות פשוט, שקוף ומשתלם. אנו מלווים אתכם בכל שלב — מבדיקת הכדאיות הראשונית, דרך תכנון מקצועי, סיוע במימון והגשות לחברת החשמל, ועד להתקנה מלאה ומסירת המערכת. תורידו את חשבון החשמל, תייצרו הכנסה פסיבית מהגג שלכם, ותנו לנו לנהל הכל בשבילכם — ללא הפתעות.</p>
 
-      <!-- Trust Qualities -->
-      <ul class="about-trust-list">
-        <li class="about-trust-item">
-          <span class="about-trust-icon" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.8"></circle>
-              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </span>
-          <div class="about-trust-text">
-            <strong>ניהול פרויקט מלא</strong>
-            <span>מהבדיקה הראשונה ועד מסירת המערכת – הכל בידיים שלנו</span>
-          </div>
+      <ul class="about-checklist">
+        <li>
+          <span class="check-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+          <span>ניהול פרויקט מלא מקצה לקצה</span>
         </li>
-        <li class="about-trust-item">
-          <span class="about-trust-icon" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.8"></circle>
-              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </span>
-          <div class="about-trust-text">
-            <strong>שקיפות מלאה ותמחור מדויק</strong>
-            <span>הצעת מחיר מפורטת לפני כל שלב – ללא הפתעות</span>
-          </div>
+        <li>
+          <span class="check-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+          <span>שקיפות מלאה ותמחור ללא הפתעות</span>
         </li>
-        <li class="about-trust-item">
-          <span class="about-trust-icon" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.8"></circle>
-              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </span>
-          <div class="about-trust-text">
-            <strong>שירות אישי ומותאם</strong>
-            <span>כל לקוח מקבל ליווי צמוד ומענה מהיר לאורך כל הדרך</span>
-          </div>
+        <li>
+          <span class="check-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+          <span>שירות אישי ומענה מהיר</span>
         </li>
       </ul>
+
+      <!-- Stats row -->
+      <div class="about-stats">
+        <div class="stat-box">
+          <span class="stat-number">+500</span>
+          <span class="stat-label">מערכות הותקנו</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-box">
+          <span class="stat-number">70%</span>
+          <span class="stat-label">חיסכון ממוצע בחשמל</span>
+        </div>
+      </div>
+
+      <a href="#contact" class="about-cta-btn">קבלו בדיקת כדאיות חינם <i class="fa-solid fa-arrow-left"></i></a>
     </div>
 
-    <!-- Image Column (END = LEFT in RTL) -->
+    <!-- Left column: image -->
     <div class="about-image-col">
-      <!-- Peeking backplate -->
-      <div class="about-backplate" aria-hidden="true"></div>
-
-      <!-- Main image -->
-      <figure class="about-image-figure">
-        <img loading="lazy" decoding="async" data-placeholder="index-about-image-1" data-context="Professional aerial view of a modern Israeli residential rooftop with newly installed solar panels arranged in neat rows, warm Mediterranean afternoon sunlight casting gentle shadows, clean architectural geometry, blue sky background, high quality professional photography, solar energy installation" width="620" height="480" src="" alt="מערכת סולארית מותקנת על גג בית פרטי – סולגג" class="about-main-image">
+      <div class="about-image-wrapper">
+        <!-- Orange corner accent -->
+        <div class="about-corner-accent" aria-hidden="true"></div>
         <!-- Floating dot accent -->
-        <span class="about-dot-accent" aria-hidden="true"></span>
-      </figure>
+        <div class="about-dot-accent" aria-hidden="true"></div>
+        <img data-context="Professional solar panel installation on an Israeli residential rooftop, bright Mediterranean sunlight, blue sky, technician in safety gear inspecting high-quality solar modules, warm golden tones, modern home, aerial perspective showing rows of clean solar panels, photovoltaic energy system" width="600" height="480" src="/assets/solgag-section-בית-about-index-about-image-1.webp" alt="התקנת מערכת סולארית על גג בית פרטי בישראל" class="about-photo">
+      </div>
     </div>
-  </div>
-
-  <!-- Bottom contour-map divider -->
-  <div class="about-divider-wrapper">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,70 L0,28 Q60,18 120,26 T240,20 Q300,26 360,16 T480,22 Q540,18 600,24 T720,16 Q780,22 840,18 T960,24 Q1020,18 1080,26 T1200,20 L1200,70 Z" fill="#D8E0DA"></path>
-      <path d="M0,70 L0,38 Q60,30 120,36 T240,30 Q300,36 360,26 T480,32 Q540,28 600,34 T720,26 Q780,32 840,28 T960,34 Q1020,28 1080,36 T1200,30 L1200,70 Z" fill="#D8E0DA" fill-opacity="0.6"></path>
-    </svg>
   </div>
 </section>
 
