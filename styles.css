@@ -5982,6 +5982,378 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     font-size: 2rem;
   }
 }
+
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(13, 43, 69, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18) !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease !important;
+  padding: 0 !important;
+  min-height: 72px !important;
+}
+
+.navbar .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 72px !important;
+  gap: 24px;
+}
+
+.navbar .nav-right-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 40px !important;
+  flex-shrink: 0;
+}
+
+.navbar .logo-link img.logo {
+  height: 44px !important;
+  width: auto !important;
+}
+
+.navbar .nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.navbar .nav-menu li a {
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  color: rgba(255,255,255,0.88) !important;
+  text-decoration: none !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.navbar .nav-menu li a:hover {
+  color: var(--accent-color) !important;
+  background: rgba(255,107,0,0.10) !important;
+}
+
+.navbar .nav-phone {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: rgba(255,255,255,0.88) !important;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  transition: color 0.2s ease !important;
+  letter-spacing: 0.02em;
+}
+
+.navbar .nav-phone:hover {
+  color: var(--accent-color) !important;
+}
+
+.navbar .nav-phone i {
+  font-size: 0.85rem !important;
+  color: var(--accent-color) !important;
+}
+
+.navbar .nav-cta-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.navbar .nav-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: var(--accent-color) !important;
+  color: var(--background-color) !important;
+  font-family: 'Noto Sans Hebrew', 'Assistant', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  padding: 10px 22px !important;
+  border-radius: 100px !important;
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(255,107,0,0.35) !important;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.navbar .nav-cta-btn:hover {
+  background: #e05e00 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(255,107,0,0.45) !important;
+}
+
+.navbar .nav-menu > li > a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-menu > .nav-item > a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .dropdown-menu li a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .sub-menu li a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-menu .sub-menu a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-menu .sub-menu li a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .zappy-products-dropdown .sub-menu a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+nav.navbar .sub-menu li a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-box .nav-search-input {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .cart-link.nav-cart {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .login-link.nav-login {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .cart-link.nav-cart svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .login-link.nav-login svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled ~ .zappy-catalog-menu .catalog-menu-item {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled ~ .zappy-catalog-menu .catalog-menu-all {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-item {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-all {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .nav-menu > li > a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .nav-menu > .nav-item > a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .nav-link {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled a:not(.nav-cta-btn) {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .navbar-brand {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .navbar-brand a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .dropdown-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .mobile-hamburger-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .mobile-close-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .phone-header-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .mobile-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .mobile-toggle svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .mobile-hamburger-btn svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .mobile-close-btn svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .phone-header-btn svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .navbar-brand svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .logo-link svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .nav-search-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .cart-link.nav-cart {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .login-link.nav-login {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .nav-search-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar.scrolled .search-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-link {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar a:not(.nav-cta-btn) {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .navbar-brand {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .navbar-brand a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .dropdown-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .mobile-hamburger-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .mobile-close-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .sub-menu a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .mobile-submenu-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .phone-header-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-input {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-input::placeholder {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-result-name {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-result-item a {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-result-price {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-no-results {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .search-no-results {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .search-toggle {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-search-toggle svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .search-toggle svg {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.navbar .nav-cta-btn {
+  color: rgba(255,255,255,0.88) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
